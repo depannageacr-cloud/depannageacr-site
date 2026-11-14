@@ -1,6 +1,14 @@
 DirectoryIndex index.php index.html
 <IfModule mod_rewrite.c>
 RewriteEngine On
+RewriteRule ^takeldienst-west-vlaanderen/?$ /werkgebied/ [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\.depannageoostvlaanderen\.be$ [NC,OR]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP_HOST} ^(www\.)?depannageoostvlaanderen\.be$ [NC]
+RewriteRule ^ https://depannageoostvlaanderen.be%{REQUEST_URI} [R=301,L,NE]
+RewriteRule ^takeldienst\-merelbeke/?$ /takeldienst-merelbeke-melle/ [R=301,L]
+RewriteRule ^takeldienst\-melle/?$ /takeldienst-merelbeke-melle/ [R=301,L]
+RewriteRule ^takeldienst\-oost\-vlaanderen/?$ /werkgebied/ [R=301,L]
 RewriteRule ^blog/?$ /advies/ [R=301,L]
 RewriteRule ^transport\-tractor/?$ /transport-landbouwmachines/ [R=301,L]
 RewriteRule ^tractor\-vervoer/?$ /transport-landbouwmachines/ [R=301,L]
